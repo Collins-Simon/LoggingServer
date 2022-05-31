@@ -1,4 +1,4 @@
-package nz.ac.wgtn.swen301.resthome4logs;
+package nz.ac.wgtn.swen301.resthome4logs.server;
 
 /**
  * Hello world!
