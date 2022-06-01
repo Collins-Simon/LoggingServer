@@ -12,21 +12,22 @@
     <maven.compiler.source>11</maven.compiler.source>
   </properties>
   
-  <dependencies>
+   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
         <version>3.1.0</version>
         <scope>provided</scope>
       </dependency>
-  </dependencies>
-   <build>
+      <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
+		      
+    </dependencies>
+  <build>
     <extensions>
       <extension>
         <groupId>javax.annotation</groupId>
@@ -47,8 +48,11 @@
         <configuration>
           <scanIntervalSeconds>10</scanIntervalSeconds>
           <webApp>
-            <contextPath>/webapp</contextPath>
+            <contextPath></contextPath>
           </webApp>
+          <supportedPackagings>
+                <supportedPackaging>jar</supportedPackaging>
+              </supportedPackagings>
         </configuration>
       </plugin>
       <plugin>
