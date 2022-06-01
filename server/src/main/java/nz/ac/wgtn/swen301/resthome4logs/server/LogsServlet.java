@@ -48,18 +48,28 @@ public class LogsServlet extends HttpServlet{
 		Gson gson = new Gson();
 		resp.setContentType("application/json");
 		PrintWriter output = resp.getWriter();
-
+		LogEvent data = null;
 
 		String jsondata = req.getReader().lines().collect(Collectors.joining());
-		LogEvent data = gson.fromJson(jsondata, LogEvent.class);
-		output.println(jsondata);
 		try {
-			Persistency.addLog(data);
+			data = gson.fromJson(jsondata, LogEvent.class);
 		}catch(IllegalArgumentException e) {
 			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;
 		}
+		//output.println(jsondata);
+		try {
+			Persistency.addLog(data);
+		}catch(IllegalArgumentException e) {
+			resp.sendError(HttpServletResponse.SC_CONFLICT);
+			return;
+		}
 		
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Persistency.clearDB();
 	}
 	
 	

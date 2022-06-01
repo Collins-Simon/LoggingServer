@@ -72,6 +72,9 @@ public class Persistency {
 		}
 		database.add(logToAdd);
 	}
+	public static void clearDB() {
+		database.clear();
+	}
 	
 
 }
