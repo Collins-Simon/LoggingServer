@@ -30,7 +30,7 @@ public class Persistency {
 	}
 	private static Gson gson = new Gson();
 	
-	private static List<LogEvent> database = new ArrayList<LogEvent>();
+	public static List<LogEvent> database = new ArrayList<LogEvent>();
 	static {
 		resetDB();
 	}

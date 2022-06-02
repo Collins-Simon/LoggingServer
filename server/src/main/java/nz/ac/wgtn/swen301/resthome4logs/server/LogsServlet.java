@@ -57,10 +57,6 @@ public class LogsServlet extends HttpServlet{
 		String jsondata = req.getReader().lines().collect(Collectors.joining());
 		try {
 			data = gson.fromJson(jsondata, LogEvent.class);
-			
-		}catch(IllegalArgumentException e) {
-			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
-			return;
 		}catch(JsonSyntaxException e) {
 			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;
