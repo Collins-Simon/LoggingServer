@@ -32,15 +32,7 @@ public class Persistency {
 	
 	private static List<LogEvent> database = new ArrayList<LogEvent>();
 	static {
-		database.add(gson.fromJson(" {\n"
-				+ "    \"id\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\n"
-				+ "    \"message\": \"application started\",\n"
-				+ "    \"timestamp\": \"04-05-2021 13:30:45\",\n"
-				+ "    \"thread\": \"main\",\n"
-				+ "    \"logger\": \"com.example.Foo\",\n"
-				+ "    \"level\": \"DEBUG\",\n"
-			+ "    \"errorDetails\": \"string\"\n"
-				+ "  }", LogEvent.class));
+		resetDB();
 	}
 	
 	public static List<String> getLogs(int numberOfLogs, Level level){
@@ -74,6 +66,18 @@ public class Persistency {
 	}
 	public static void clearDB() {
 		database.clear();
+	}
+	public static void resetDB() {
+		clearDB();
+		database.add(gson.fromJson(" {\n"
+				+ "    \"id\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\n"
+				+ "    \"message\": \"application started\",\n"
+				+ "    \"timestamp\": \"04-05-2021 13:30:45\",\n"
+				+ "    \"thread\": \"main\",\n"
+				+ "    \"logger\": \"com.example.Foo\",\n"
+				+ "    \"level\": \"DEBUG\",\n"
+			+ "    \"errorDetails\": \"string\"\n"
+				+ "  }", LogEvent.class));
 	}
 	
 

@@ -28,7 +28,7 @@ public class LogsServlet extends HttpServlet{
 		PrintWriter output = resp.getWriter();
 
 		Integer limit;
-		Persistency.Level level = null;
+		Persistency.Level level = null; 
 		
 		try {
 			limit = Integer.parseInt(req.getParameter("limit"));
