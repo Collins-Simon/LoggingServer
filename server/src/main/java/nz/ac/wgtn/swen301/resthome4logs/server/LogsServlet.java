@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 /**
  * @author simon
@@ -56,6 +57,16 @@ public class LogsServlet extends HttpServlet{
 		String jsondata = req.getReader().lines().collect(Collectors.joining());
 		try {
 			data = gson.fromJson(jsondata, LogEvent.class);
+			
+		}catch(IllegalArgumentException e) {
+			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}catch(JsonSyntaxException e) {
+			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			return;
+		}
+		try{
+			Persistency.Level.valueOf(data.level);
 		}catch(IllegalArgumentException e) {
 			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
 			return;

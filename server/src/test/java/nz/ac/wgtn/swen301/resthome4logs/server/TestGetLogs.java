@@ -30,6 +30,7 @@ public class TestGetLogs {
 		Persistency.resetDB();
 
 		MockHttpServletRequest request = new MockHttpServletRequest();
+
 		request.setParameter("limit","3");
 		request.setParameter("level", "DEBUG");
 		MockHttpServletResponse response = new MockHttpServletResponse() {

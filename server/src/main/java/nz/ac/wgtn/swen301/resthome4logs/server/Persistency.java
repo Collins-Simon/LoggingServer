@@ -47,11 +47,11 @@ public class Persistency {
 				toreturn.add(gson.toJson(asEvent));
 			}
 			
-			i++;
+			i++; 
 		}
 		return toreturn;
 	}
-	/**
+	/** 
 	 * @param logToAdd
 	 */
 	public static void addLog(LogEvent logToAdd) {
