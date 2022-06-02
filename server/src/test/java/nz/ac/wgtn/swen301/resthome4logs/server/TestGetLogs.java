@@ -61,15 +61,19 @@ public class TestGetLogs {
 		
 		assertNotNull(resultsArray);
 		assertEquals(1, resultsArray.length);
+		assertEquals(200, response.getStatus());
 		
 	}
 	
+	/**
+	 * Testing an invalid limit parameter
+	 */
 	@Test
 	public void Invalidtest_01() {
 		Persistency.resetDB();
 
 		MockHttpServletRequest request = new MockHttpServletRequest();
-		request.setParameter("limit","3");
+		request.setParameter("limit","invalid With spaces and funky \\+ /characters");
 		request.setParameter("level", "DEBUG");
 		MockHttpServletResponse response = new MockHttpServletResponse() {
 			public void setContentType(String s) {}
@@ -91,17 +95,45 @@ public class TestGetLogs {
 			// TODO Auto-generated catch block
 			e.printStackTrace(); 
 		}
-		assertNotNull(result);
-		LogEvent[] resultsArray;
+		assertEquals(400, response.getStatus());
 		
-
-		resultsArray = gson.fromJson(result, LogEvent[].class);
-
-		
-		assertNotNull(resultsArray);
-		assertEquals(1, resultsArray.length);
-		
+ 
 	}
+	/**
+	 * Testing an invalid limit parameter
+	 */
+	@Test
+	public void Invalidtest_02() {
+		Persistency.resetDB();
+
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		request.setParameter("limit","2");
+		request.setParameter("level", "DEGOOSE");
+		MockHttpServletResponse response = new MockHttpServletResponse() {
+			public void setContentType(String s) {}
+		};
+		LogsServlet service = new LogsServlet();
+		try {
+			service.doGet(request,response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String result = null;
+		try {
+			result = response.getContentAsString();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace(); 
+		}
+		assertEquals(400, response.getStatus());
+		
+ 
+	}
+	
 	
 
 

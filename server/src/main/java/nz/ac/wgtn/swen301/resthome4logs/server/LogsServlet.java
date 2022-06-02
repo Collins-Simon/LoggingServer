@@ -27,7 +27,7 @@ public class LogsServlet extends HttpServlet{
 		resp.setContentType("application/json");
 		PrintWriter output = resp.getWriter();
 
-		Integer limit;
+		Integer limit = null;
 		Persistency.Level level = null; 
 		
 		try {
@@ -35,9 +35,12 @@ public class LogsServlet extends HttpServlet{
 			level = Persistency.Level.valueOf(req.getParameter("level"));
 		}catch(NumberFormatException e) {
 			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			return;
 		}catch(IllegalArgumentException e) {
 			resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			return;
 		}
+
 
 		output.println(Persistency.getLogs(5, level));
 
@@ -69,7 +72,7 @@ public class LogsServlet extends HttpServlet{
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Persistency.clearDB();
+		Persistency.clearDB(); 
 	}
 	
 	
