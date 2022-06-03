@@ -21,9 +21,7 @@ public class TestDeleteLogs {
 
 		request.setParameter("limit","3");
 		request.setParameter("level", "DEBUG");
-		MockHttpServletResponse response = new MockHttpServletResponse() {
-			public void setContentType(String s) {}
-		};
+		MockHttpServletResponse response = new MockHttpServletResponse();
 		LogsServlet service = new LogsServlet();
 		try {
 			service.doDelete(request,response);

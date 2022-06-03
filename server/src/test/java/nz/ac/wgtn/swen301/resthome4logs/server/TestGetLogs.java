@@ -33,9 +33,7 @@ public class TestGetLogs {
 
 		request.setParameter("limit","3");
 		request.setParameter("level", "DEBUG");
-		MockHttpServletResponse response = new MockHttpServletResponse() {
-			public void setContentType(String s) {}
-		};
+		MockHttpServletResponse response = new MockHttpServletResponse();
 		LogsServlet service = new LogsServlet();
 		try {
 			service.doGet(request,response);
@@ -76,9 +74,7 @@ public class TestGetLogs {
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		request.setParameter("limit","invalid With spaces and funky \\+ /characters");
 		request.setParameter("level", "DEBUG");
-		MockHttpServletResponse response = new MockHttpServletResponse() {
-			public void setContentType(String s) {}
-		};
+		MockHttpServletResponse response = new MockHttpServletResponse();
 		LogsServlet service = new LogsServlet();
 		try {
 			service.doGet(request,response);
@@ -110,9 +106,7 @@ public class TestGetLogs {
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		request.setParameter("limit","2");
 		request.setParameter("level", "DEGOOSE");
-		MockHttpServletResponse response = new MockHttpServletResponse() {
-			public void setContentType(String s) {}
-		};
+		MockHttpServletResponse response = new MockHttpServletResponse() ;
 		LogsServlet service = new LogsServlet();
 		try {
 			service.doGet(request,response);

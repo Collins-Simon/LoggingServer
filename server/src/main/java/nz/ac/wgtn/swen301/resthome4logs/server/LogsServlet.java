@@ -20,12 +20,12 @@ import com.google.gson.JsonSyntaxException;
  * @author simon
  *
  */
-public class LogsServlet extends HttpServlet{
+public class LogsServlet extends HttpServlet{ 
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getParameterMap();
 		resp.setContentType("application/json");
+		req.getParameterMap();
 		PrintWriter output = resp.getWriter();
 
 		Integer limit = null;

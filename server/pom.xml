@@ -39,7 +39,22 @@
 		    <version>5.3.19</version>
 		    <scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>5.3.19</version>
+		</dependency>
 		
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>5.2.0</version>
+		</dependency>	
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>5.2.0</version>
+		</dependency>
 
     </dependencies>
   <build>
@@ -63,7 +78,7 @@
         <configuration>
           <scanIntervalSeconds>10</scanIntervalSeconds>
           <webApp>
-            <contextPath></contextPath>
+            <contextPath>/resthome4logs</contextPath>
           </webApp>
           <supportedPackagings>
                 <supportedPackaging>jar</supportedPackaging>
