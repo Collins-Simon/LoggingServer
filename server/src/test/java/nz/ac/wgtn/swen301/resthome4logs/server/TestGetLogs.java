@@ -28,7 +28,7 @@ public class TestGetLogs {
 	@Test
 	public void validTest_01() {
 		Persistency.resetDB();
-
+ 
 		MockHttpServletRequest request = new MockHttpServletRequest();
 
 		request.setParameter("limit","3");

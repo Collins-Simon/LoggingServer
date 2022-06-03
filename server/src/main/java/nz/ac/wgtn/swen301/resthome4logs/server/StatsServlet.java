@@ -23,7 +23,7 @@ public class StatsServlet extends HttpServlet {
         for(LogEvent log: Persistency.database) {
         	if(loggers.containsKey(log.getLogger())) {
         		HashMap<String, Integer> logRow = loggers.get(log.getLogger());
-        		Integer originalValue = logRow.getOrDefault(loggers, 0);
+        		Integer originalValue = logRow.getOrDefault(log.getLevel(), 0);
         		logRow.put(log.getLevel(), originalValue + 1);
         		
         	}else {
@@ -50,7 +50,6 @@ public class StatsServlet extends HttpServlet {
         		output.print("<td>" + entry.getValue().getOrDefault(loggername, 0) + "</td>");
         	}
         	output.print("</tr>");
-
         }
         output.print("</table>");
         output.print("</body>");

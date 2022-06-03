@@ -31,7 +31,7 @@ public class StatsXLSServlet extends HttpServlet {
 		//Make the title
 		Row toprow = sheet.createRow(0);
 		String[] logLevels = {"All", "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL", "OFF"};
-		
+		 
 		toprow.createCell(0).setCellValue("logger");
 		int pos = 1;
 		for(String name: logLevels) {
@@ -43,7 +43,7 @@ public class StatsXLSServlet extends HttpServlet {
         for(LogEvent log: Persistency.database) {
         	if(loggers.containsKey(log.getLogger())) {
         		HashMap<String, Integer> logRow = loggers.get(log.getLogger());
-        		Integer originalValue = logRow.getOrDefault(loggers, 0);
+        		Integer originalValue = logRow.getOrDefault(log.getLevel(), 0);
         		logRow.put(log.getLevel(), originalValue + 1);
         		
         	}else {
